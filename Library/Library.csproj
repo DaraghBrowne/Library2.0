@@ -208,8 +208,12 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\About\AboutController .cs" />
+    <Compile Include="Controllers\About\OpeningTimesController.cs" />
     <Compile Include="Controllers\BookController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
+    <Compile Include="Controllers\Features\BookSuggestionController.cs" />
+    <Compile Include="Controllers\Features\FeaturesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LibrarianController.cs" />
     <Compile Include="Global.asax.cs">
@@ -333,6 +337,11 @@
     <Content Include="Views\Librarian\StaffLogin.cshtml" />
     <Content Include="Views\Book\BookList.cshtml" />
     <Content Include="Views\Customer\BookBorrowed.cshtml" />
+    <Content Include="Views\About\Info.cshtml" />
+    <Content Include="Views\About\Librarian.cshtml" />
+    <Content Include="Views\About\OpeningTimes.cshtml" />
+    <Content Include="Views\Features\BookSuggestions.cshtml" />
+    <Content Include="Views\Features\Features.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
