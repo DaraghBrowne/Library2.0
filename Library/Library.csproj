@@ -333,6 +333,7 @@
     <Content Include="Views\Librarian\StaffLogin.cshtml" />
     <Content Include="Views\Book\BookList.cshtml" />
     <Content Include="Views\Customer\BookBorrowed.cshtml" />
+    <Content Include="Views\Shared\_Layout2.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
