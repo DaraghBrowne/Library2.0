@@ -125,6 +125,12 @@ namespace Library.Controllers
 			TempData["logOutMessage"] = "Successfully Logged Out";
 			return RedirectToAction("StaffLogin");
 		}
+
+		public ActionResult SubjectGuide()
+		{
+
+			return View();
+		}
 	}
 }
 

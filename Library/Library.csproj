@@ -343,6 +343,7 @@
     <Content Include="Views\About\OpeningTimes.cshtml" />
     <Content Include="Views\Features\BookSuggestions.cshtml" />
     <Content Include="Views\Features\Features.cshtml" />
+    <Content Include="Views\Librarian\SubjectGuide.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\BookSuggestion\" />
