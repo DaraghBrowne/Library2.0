@@ -1,16 +1,16 @@
 ﻿@model Library.Models.Librarian
 @{
-	ViewBag.Title = "StaffLogin";
-	Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "StaffLogin";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
 }
 
 
 <div class="mt-3">
-	<h2>StaffLogin</h2>
+    <h2>Staff Login</h2>
 </div>
 
 
-<div class="mb-5"></div>
+<div class="mb-2"></div>
 
 @if (ViewBag.LogOutMessage != null)
 {
@@ -19,43 +19,35 @@
 
 @if (Session["Error"] != null)
 {
-	<h3>@Session["Error"].ToString()</h3>
+    <h3>@Session["Error"].ToString()</h3>
 }
 
 @using (Html.BeginForm("StaffLogin", "Librarian", FormMethod.Post))
 {
-	<form>
-		@Html.AntiForgeryToken()
-		@Html.ValidationSummary(true)
-		@if (ViewBag.Message != null)
-		{
-			@ViewBag.Message
-		}
+    <form>
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        @if (ViewBag.Message != null)
+        {
+            @ViewBag.Message
+        }
 
-		<fieldset>
-			<div class="form-group">
-				<div class="row">
-					<div class="col-sm-3">
-						<label for="staffID">StaffID: </label>
-						@Html.EditorFor(a => a.LibrarianID, new { htmlAttributes = new { @class = "form-control", @type = "input", @placeholder = "Enter StaffID" } })
-						@Html.ValidationMessageFor(a => a.LibrarianID, "", new { @class = "text-danger" })
-					</div>
-					<div class="col-sm-3"></div>
-					<div class="col-sm-3"><img style="height: 250px; width: 100%; display: block;" src="~/image/DIT.jpg" alt="Card image"></div>
-				</div>
-				<div class="row">
-					<div class="col-sm-3">
-						<label for="Password1">Password: </label><br />
-						@Html.EditorFor(a => a.Password, new { htmlAttributes = new { @class = "form-control", @type = "password", @placeholder = "Enter password" } })
-						@Html.ValidationMessageFor(a => a.Password, "", new { @class = "text-danger" })
-					</div>
-					<div class="col-sm-3"></div>
-					<div class="col-sm-3"></div>
-				</div>
-			</div>
-
-
-		</fieldset>
-		<button type="submit" class="btn btn-primary">Login</button>
-	</form>
+        <fieldset>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-3">
+                        @Html.EditorFor(a => a.LibrarianID, new { htmlAttributes = new { @class = "form-control", @type = "input", @placeholder = "Enter StaffID" } })
+                        @Html.ValidationMessageFor(a => a.LibrarianID, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3">
+                        @Html.EditorFor(a => a.Password, new { htmlAttributes = new { @class = "form-control", @type = "password", @placeholder = "Enter Password" } })
+                        @Html.ValidationMessageFor(a => a.Password, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+        <button type="submit" class="btn btn-primary">Login</button>
+    </form>
 }

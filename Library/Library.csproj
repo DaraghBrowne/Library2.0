@@ -208,10 +208,14 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\BookController.cs" />
+    <Compile Include="Controllers\BookSuggestionController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
+    <Compile Include="Controllers\FeaturesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LibrarianController.cs" />
+    <Compile Include="Controllers\OpeningTimesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -333,8 +337,17 @@
     <Content Include="Views\Librarian\StaffLogin.cshtml" />
     <Content Include="Views\Book\BookList.cshtml" />
     <Content Include="Views\Customer\BookBorrowed.cshtml" />
+    <Content Include="Views\Shared\_Layout2.cshtml" />
+    <Content Include="Views\About\Info.cshtml" />
+    <Content Include="Views\About\Librarian.cshtml" />
+    <Content Include="Views\About\OpeningTimes.cshtml" />
+    <Content Include="Views\Features\BookSuggestions.cshtml" />
+    <Content Include="Views\Features\Features.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Views\BookSuggestion\" />
+    <Folder Include="Views\OpeningTimes\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
   </ItemGroup>
