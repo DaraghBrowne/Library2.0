@@ -13,6 +13,10 @@ namespace Library.Controllers
 		// GET: Librarian
 		public ActionResult StaffLogin()
 		{
+			if (TempData["logOutMessage"] != null)
+			{
+				ViewBag.LogOutMessage = TempData["logOutMessage"].ToString();
+			}
 			return View();
 
 		}
@@ -66,7 +70,7 @@ namespace Library.Controllers
 
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public ActionResult StaffArea(ItemLibrarianViewModel bookObj, int numCopies, Customer custObj)
+		public ActionResult StaffArea(ItemLibrarianViewModel libObj, int numCopies)
 		{
 			using (LibraryEntities db = new LibraryEntities())
 			{
@@ -75,26 +79,26 @@ namespace Library.Controllers
 				{
 
 					Item it = new Item();
-					it.AuthorID = bookObj.Aut.AuthorID;
-					it.Name = bookObj.It.Name;
-					it.Isbn = bookObj.It.Isbn;
-					it.Subject = bookObj.It.Subject;
+					it.AuthorID = libObj.Aut.AuthorID;
+					it.Name = libObj.It.Name;
+					it.Isbn = libObj.It.Isbn;
+					it.Subject = libObj.It.Subject;
 					it.Type = "Book";
-					it.Year = bookObj.It.Year;
-					bookObj.Aut.Isbn = bookObj.It.Isbn;
-					db.Authors.Add(bookObj.Aut);
+					it.Year = libObj.It.Year;
+					libObj.Aut.Isbn = libObj.It.Isbn;
+					db.Authors.Add(libObj.Aut);
 					db.Items.Add(it);
 					for (int i = 0; i < numCopies; i++)
 					{
 						Copy cp = new Copy();
-						cp.Isbn = bookObj.It.Isbn;
+						cp.Isbn = libObj.It.Isbn;
 						cp.Borrowed = "n";
 						db.Copies.Add(cp);
 					}
 					db.SaveChanges();
-					if (bookObj.It.Isbn > 0)
+					if (libObj.It.Isbn > 0)
 					{
-						ViewBag.Success = bookObj.It.Name.ToString();
+						ViewBag.Success = libObj.It.Name.ToString();
 
 					}
 					ModelState.Clear();
@@ -103,16 +107,23 @@ namespace Library.Controllers
 				if (ModelState.IsValid)
 				{
 					Customer cust = new Customer();
-					cust.CustName = custObj.CustName;
-					cust.CustEmail = custObj.CustEmail;
-					cust.Field = custObj.Field;
-					cust.Privalige = custObj.Privalige;
-					cust.CPassword = custObj.CPassword;
-				
+					cust.CustName = libObj.C.CustName;
+					cust.CustEmail = libObj.C.CustEmail;
+					cust.Field = libObj.C.Field;
+					cust.Privalige = libObj.C.Privalige;
+					cust.CPassword = libObj.C.CPassword;
+					db.Customers.Add(cust);
+					db.SaveChanges();
+					ModelState.Clear();
 				}
 
 				return View();
-			}
+			}//end ModelStateif
+		}//end ActionResult 
+		public ActionResult LogOut()
+		{
+			TempData["logOutMessage"] = "Successfully Logged Out";
+			return RedirectToAction("StaffLogin");
 		}
 	}
 }

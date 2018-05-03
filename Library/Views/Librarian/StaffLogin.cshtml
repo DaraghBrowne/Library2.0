@@ -12,6 +12,11 @@
 
 <div class="mb-5"></div>
 
+@if (ViewBag.LogOutMessage != null)
+{
+	<h3><span style="color:dodgerblue">@ViewBag.LogOutMessage</span></h3>
+}
+
 @if (Session["Error"] != null)
 {
 	<h3>@Session["Error"].ToString()</h3>

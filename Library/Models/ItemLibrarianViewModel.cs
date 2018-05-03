@@ -12,7 +12,7 @@ namespace Library.Models
 		public Item It { get; set; }
 		public Copy Cp { get; set; }
 		public Transaction Tc { get; set; }
-		
+		public Customer C { get; set; }
 
 	}
 }

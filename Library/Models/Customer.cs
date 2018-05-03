@@ -20,19 +20,19 @@ namespace Library.Models
         {
             this.Transactions = new HashSet<Transaction>();
         }
-    
-        public int CustID { get; set; }
-        public string CustName { get; set; }
+
+		public int CustID { get; set; }
+		public string CustName { get; set; }
 		[EmailAddress]
 		[Required(ErrorMessage = "Please Enter Email")]
-        public string CustEmail { get; set; }
-        public string Privalige { get; set; }
-        public Nullable<double> Fine { get; set; }
+		public string CustEmail { get; set; }
+		public string Privalige { get; set; }
+		public Nullable<double> Fine { get; set; }
 		[Required(ErrorMessage = "Please Enter Password")]
 		public string CPassword { get; set; }
-        public string Field { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+		public string Field { get; set; }
+
+		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Transaction> Transactions { get; set; }
     }
 }
