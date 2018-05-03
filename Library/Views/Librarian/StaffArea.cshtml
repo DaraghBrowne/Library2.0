@@ -14,137 +14,200 @@
 	<div class="col-sm-2"></div>
 	<div class="col-sm-2"> <input type="button" value="Log Out" class="btn btn-danger btn-sm" onclick="location.href='@Url.Action("LogOut", "Librarian")'" /></div>
 </div>
-	<div class="row">
-		<div class="col-sm-3">
-			<div class="mt-3">
-				<h2>Add Books</h2>
+<div class="row">
+	<div class="col-sm-3">
+		<div class="mt-3">
+			<h2>Add Books</h2>
+		</div>
+	</div>
+	<div class="col-sm-3"></div>
+	<div class="col-sm-3">
+		<div class="mt-3">
+			<h2>Add Students</h2>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-sm-3">
+		<button type="submit" class="btn btn-success" id="editBtn">Edit</button>
+		<button type="submit" class="btn btn-success" id="addBtn">Add</button>
+	</div>
+	<div class="col-sm-3"></div>
+	<div class="col-sm-3">
+		<button class="btn btn-success" id="editStdBtn">Edit</button>
+		<button class="btn btn-success" id="addStdBtn">Add</button>
+	</div>
+</div>
+
+<div class="container">
+	<div class="mt-5"></div>
+	@if (ViewBag.Success != null)
+	{
+		<h6><span style="color: lawngreen">Successfully Added: </span> @ViewBag.Success</h6>
+	}
+
+
+	@Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
+
+	@using (Html.BeginForm("AddStudent", "Librarian", FormMethod.Post))
+	{
+
+		<form>
+			@Html.AntiForgeryToken()
+			@Html.ValidationSummary(true)
+			@if (ViewBag.Message != null)
+			{
+				@ViewBag.Message
+			}
+			@Html.ValidationSummary(false, "", new { @class = "text-danger" })
+			<div id="bookTable" style="visibility: hidden;">
+				<h3>Add Books Here</h3>
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th scope="col">Book</th>
+							<th scope="col">Author</th>
+							<th scope="col">ISBN</th>
+							<th scope="col">Subject</th>
+							<th scope="col">Year</th>
+							<th scope="col">Number Of Copies</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="table-active">
+							<td scope="col">@Html.EditorFor(a => a.It.Name, new { htmlAttributes = new { @class = "form-control", @type = "text", @placeholder = "Book" } })</td>
+							<td scope="col">@Html.EditorFor(a => a.Aut.AuthName, new { htmlAttributes = new { @class = "form-control", @type = "text", @placeholder = "Author" } })</td>
+							<td scope="col">@Html.EditorFor(a => a.It.Isbn, new { htmlAttributes = new { @class = "form-control", @type = "text", @placeholder = "ISBN" } })</td>
+							<td scope="col">@Html.EditorFor(a => a.It.Subject, new { htmlAttributes = new { @class = "form-control", @type = "text", @placeholder = "Subject" } })</td>
+							<td scope="col">@Html.EditorFor(a => a.It.Year, new { htmlAttributes = new { @class = "form-control", @type = "text", @placeholder = "Year" } })</td>
+							<td scope="col"><input type="number" class="form-control" name="numCopies" /></td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
-		</div>
-		<div class="col-sm-3"></div>
-		<div class="col-sm-3">
-			<div class="mt-3">
-				<h2>Add Students</h2>
+			<button type="submit" style="visibility:hidden;" id="bookBtn" class="btn btn-success">Add Book</button>
+		</form>
+	}
+
+	@using (Html.BeginForm("StaffArea", "Librarian", FormMethod.Post))
+	{
+
+		<form>
+			@Html.AntiForgeryToken()
+			@Html.ValidationSummary(true)
+			@if (ViewBag.Message != null)
+			{
+				@ViewBag.Message
+			}
+			@Html.ValidationSummary(false, "", new { @class = "text-danger" })
+			<div id="studentTable" style="visibility: hidden;">
+				<h3>Add Students Here</h3>
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th scope="col">Name</th>
+							<th scope="col">Email</th>
+							<th scope="col">Password</th>
+							<th scope="col">Privalige</th>
+							<th scope="col">Field</th>
+
+					</thead>
+					<tbody>
+						<tr class="table-active">
+							<td scope="col">@Html.EditorFor(a => a.C.CustName, new { htmlAttributes = new { @class = "form-control", @type = "text", @placeholder = "Name" } })</td>
+							<td scope="col">@Html.EditorFor(a => a.C.CustEmail, new { htmlAttributes = new { @class = "form-control", @type = "email", @placeholder = "Email" } })</td>
+							<td scope="col">@Html.EditorFor(a => a.C.CPassword, new { htmlAttributes = new { @class = "form-control", @type = "password", @placeholder = "Passoword" } })</td>
+							<td scope="col">@Html.EditorFor(a => a.C.Privalige, new { htmlAttributes = new { @class = "form-control", @type = "text", @placeholder = "Privalige" } })</td>
+							<td scope="col">@Html.EditorFor(a => a.C.Field, new { htmlAttributes = new { @class = "form-control", @type = "text", @placeholder = "Subject" } })</td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-sm-3">
-			<button type="submit" class="btn btn-success" id="editBtn">Edit</button>
-			<button type="submit" class="btn btn-success" id="addBtn">Add</button>
-		</div>
-		<div class="col-sm-3"></div>
-		<div class="col-sm-3">
-			<button class="btn btn-success" id="editStdBtn">Edit</button>
-			<button class="btn btn-success" id="addStdBtn">Add</button>
-		</div>
-	</div>
-
-	<div class="container">
-		<div class="mt-5"></div>
-		@if (ViewBag.Success != null)
-		{
-			<h6><span style="color: lawngreen">Successfully Added: </span> @ViewBag.Success</h6>
-		}
+			<button type="submit" style="visibility:hidden;" id="stdBtn" class="btn btn-success">Add Student</button>
+		</form>
+	}
 
 
-		@Html.ValidationSummary(false, "", new { @class = "text-danger" })
 
+</div>
 
-		@using (Html.BeginForm("AddStudent", "Librarian", FormMethod.Post))
-		{
+<div class="demo-section k-content">
+	<h4>Treeview One</h4>
 
-			<form>
-				@Html.AntiForgeryToken()
-				@Html.ValidationSummary(true)
-				@if (ViewBag.Message != null)
+	@(Html.Kendo().TreeView()
+				.Name("treeview-left")
+				.DragAndDrop(true)
+				.Items(treeview =>
 				{
-					@ViewBag.Message
-				}
-				@Html.ValidationSummary(false, "", new { @class = "text-danger" })
-				<div id="bookTable" style="visibility: hidden;">
-					<h3>Add Books Here</h3>
-					<table class="table table-hover">
-						<thead>
-							<tr>
-								<th scope="col">Book</th>
-								<th scope="col">Author</th>
-								<th scope="col">ISBN</th>
-								<th scope="col">Subject</th>
-								<th scope="col">Year</th>
-								<th scope="col">Number Of Copies</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr class="table-active">
-								<td scope="col">@Html.EditorFor(a => a.It.Name, new { htmlAttributes = new { @class = "form-control", @type = "text", @placeholder = "Book" } })</td>
-								<td scope="col">@Html.EditorFor(a => a.Aut.AuthName, new { htmlAttributes = new { @class = "form-control", @type = "text", @placeholder = "Author" } })</td>
-								<td scope="col">@Html.EditorFor(a => a.It.Isbn, new { htmlAttributes = new { @class = "form-control", @type = "text", @placeholder = "ISBN" } })</td>
-								<td scope="col">@Html.EditorFor(a => a.It.Subject, new { htmlAttributes = new { @class = "form-control", @type = "text", @placeholder = "Subject" } })</td>
-								<td scope="col">@Html.EditorFor(a => a.It.Year, new { htmlAttributes = new { @class = "form-control", @type = "text", @placeholder = "Year" } })</td>
-								<td scope="col"><input type="number" class="form-control" name="numCopies" /></td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-				<button type="submit" style="visibility:hidden;" id="bookBtn" class="btn btn-success">Add Book</button>
-			</form>
-		}
+					treeview.Add().Text("Furniture")
+						.Expanded(true)
+						.Items(furniture =>
+						{
+							furniture.Add().Text("Tables & Chairs");
+							furniture.Add().Text("Sofas");
+							furniture.Add().Text("Occasional Furniture");
+						});
 
-		@using (Html.BeginForm("StaffArea", "Librarian", FormMethod.Post))
-		{
+					treeview.Add().Text("Decor")
+						.Items(furniture =>
+						{
+							furniture.Add().Text("Bed Linen");
+							furniture.Add().Text("Curtains & Blinds");
+							furniture.Add().Text("Carpets");
+						});
+				})
+	)
 
-			<form>
-				@Html.AntiForgeryToken()
-				@Html.ValidationSummary(true)
-				@if (ViewBag.Message != null)
+	<h4 style="padding-top: 2em;">Treeview Two</h4>
+
+	@(Html.Kendo().TreeView()
+				.Name("treeview-right")
+				.DragAndDrop(true)
+				.Items(treeview =>
 				{
-					@ViewBag.Message
-				}
-				@Html.ValidationSummary(false, "", new { @class = "text-danger" })
-				<div id="studentTable" style="visibility: hidden;">
-					<h3>Add Students Here</h3>
-					<table class="table table-hover">
-						<thead>
-							<tr>
-								<th scope="col">Name</th>
-								<th scope="col">Email</th>
-								<th scope="col">Password</th>
-								<th scope="col">Privalige</th>
-								<th scope="col">Field</th>
+					treeview.Add().Text("Storage")
+						.Expanded(true)
+						.Items(furniture =>
+						{
+							furniture.Add().Text("Wall Shelving");
+							furniture.Add().Text("Floor Shelving");
+							furniture.Add().Text("Kids Storage");
+						});
 
-						</thead>
-						<tbody>
-							<tr class="table-active">
-								<td scope="col">@Html.EditorFor(a => a.C.CustName, new { htmlAttributes = new { @class = "form-control", @type = "text", @placeholder = "Name" } })</td>
-								<td scope="col">@Html.EditorFor(a => a.C.CustEmail, new { htmlAttributes = new { @class = "form-control", @type = "email", @placeholder = "Email" } })</td>
-								<td scope="col">@Html.EditorFor(a => a.C.CPassword, new { htmlAttributes = new { @class = "form-control", @type = "password", @placeholder = "Passoword" } })</td>
-								<td scope="col">@Html.EditorFor(a => a.C.Privalige, new { htmlAttributes = new { @class = "form-control", @type = "text", @placeholder = "Privalige" } })</td>
-								<td scope="col">@Html.EditorFor(a => a.C.Field, new { htmlAttributes = new { @class = "form-control", @type = "text", @placeholder = "Subject" } })</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-				<button type="submit" style="visibility:hidden;" id="stdBtn" class="btn btn-success">Add Student</button>
-			</form>
-		}
+					treeview.Add().Text("Lights")
+						.Items(furniture =>
+						{
+							furniture.Add().Text("Ceiling");
+							furniture.Add().Text("Table");
+							furniture.Add().Text("Floor");
+						});
+				})
+	)
 
+</div>
 
+<style>
+	#treeview-left,
+	#treeview-right {
+		overflow: visible;
+	}
+</style>
 
-	</div>
-	<script>
-		var addBook = document.getElementById("addBtn");
-		addBook.addEventListener("click", function () {
-			document.getElementById("bookTable").style.visibility = "visible";
-			document.getElementById("bookBtn").style.visibility = "visible";
-			document.getElementById("studentTable").style.visibility = "hidden";
-			document.getElementById("stdBtn").style.visibility = "hidden";
-		})
+<script>
+	var addBook = document.getElementById("addBtn");
+	addBook.addEventListener("click", function () {
+		document.getElementById("bookTable").style.visibility = "visible";
+		document.getElementById("bookBtn").style.visibility = "visible";
+		document.getElementById("studentTable").style.visibility = "hidden";
+		document.getElementById("stdBtn").style.visibility = "hidden";
+	})
 
-		var addStudent = document.getElementById("addStdBtn");
-		addStudent.addEventListener("click", function () {
-			document.getElementById("studentTable").style.visibility = "visible";
-			document.getElementById("stdBtn").style.visibility = "visible";
-			document.getElementById("bookTable").style.visibility = "hidden";
-			document.getElementById("bookBtn").style.visibility = "hidden";
-		})
-	</script>
+	var addStudent = document.getElementById("addStdBtn");
+	addStudent.addEventListener("click", function () {
+		document.getElementById("studentTable").style.visibility = "visible";
+		document.getElementById("stdBtn").style.visibility = "visible";
+		document.getElementById("bookTable").style.visibility = "hidden";
+		document.getElementById("bookBtn").style.visibility = "hidden";
+	})
+</script>
