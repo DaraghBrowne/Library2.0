@@ -1,8 +1,48 @@
-﻿
+﻿@model IEnumerable<Library.Models.ItemLibrarianViewModel>
 @{
-    ViewBag.Title = "SubjectGuide";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+	ViewBag.Title = "SubjectGuide";
+	Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+<script language="javascript" type="text/javascript">
+	$(document).ready(function () {
+		$('#listBooks img').css({ 'z-index': 100 }).draggable({
+			'opacity': '0.5',
+			'revert': true,
+			'cursor': 'pointer'
+		});
+	});
+
+</script>
 
 <h2>SubjectGuide</h2>
 
+<div style="float:left; margin-right:10px;" id="listBooks">
+	<table cellpadding="2" cellspacing="2" border="1">
+		<thead>
+			<tr>
+				<th scope="col">Book</th>
+				<th scope="col">Author</th>
+				<th scope="col">ISBN</th>
+				<th scope="col">Subject</th>
+				<th scope="col">Year</th>
+				<th scope="col">Number Of Copies</th>
+			</tr>
+			
+		</thead>
+		<tbody>
+			@foreach (var item in Model)
+			{
+			<tr class="table-secondary">
+				<td>@Html.DisplayFor(model => item.It.Name)</td>
+				<td>@Html.DisplayFor(model => item.Aut.AuthName)</td>
+				<td>@Html.DisplayFor(model => item.It.Isbn)</td>
+				<td>@Html.DisplayFor(model => item.It.Subject)</td>
+				<td>@Html.DisplayFor(model => item.It.Year)
+					<input type="hidden" class="productID" value="@item.It.Isbn" /></td>
+			</tr>
+
+			}
+		</tbody>
+</table>
+</div>

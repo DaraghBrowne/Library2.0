@@ -128,8 +128,18 @@ namespace Library.Controllers
 
 		public ActionResult SubjectGuide()
 		{
+			using (LibraryEntities db = new LibraryEntities())
+			{
+				var books = from Aut in db.Authors
+							join It in db.Items
+							on Aut.AuthorID equals It.AuthorID
+							select new ItemLibrarianViewModel { It = It, Aut = Aut };
 
-			return View();
+				books.ToList();
+				return View(books);
+			}
+
+				
 		}
 	}
 }
