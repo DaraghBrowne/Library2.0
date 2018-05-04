@@ -13,6 +13,11 @@ namespace Library.Controllers
 		// GET: Librarian
 		public ActionResult StaffLogin()
 		{
+			if (TempData["logOutMessage"] != null)
+			{
+				ViewBag.LogOutMessage = TempData["logOutMessage"].ToString();
+			}
+
 			return View();
 
 		}
@@ -113,6 +118,11 @@ namespace Library.Controllers
 
 				return View();
 			}
+		}
+		public ActionResult LogOut()
+		{
+			TempData["logOutMessage"] = "Successfully Logged Out";
+			return RedirectToAction("StaffLogin");
 		}
 	}
 }
