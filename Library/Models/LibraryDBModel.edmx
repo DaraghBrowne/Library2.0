@@ -523,6 +523,24 @@
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->
-    <Diagrams></Diagrams>
+    <Diagrams>
+      <Diagram DiagramId="00d703c9729d43fd8ad5cbbfb538c56d" Name="Diagram1">
+        <EntityTypeShape EntityType="LibraryModel.Administrator" Width="1.5" PointX="7.75" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryModel.Author" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryModel.Copy" Width="1.5" PointX="5.25" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryModel.Customer" Width="1.5" PointX="5.25" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryModel.Item" Width="1.5" PointX="3" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryModel.Librarian" Width="1.5" PointX="0.75" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryModel.Transaction" Width="1.5" PointX="7.5" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryModel.Tag" Width="1.5" PointX="3" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryModel.TagItem" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="LibraryModel.FK__Item__AuthorID__2A4B4B5E" ManuallyRouted="false" />
+        <AssociationConnector Association="LibraryModel.FK__Copy__Isbn__29572725" ManuallyRouted="false" />
+        <AssociationConnector Association="LibraryModel.FK__Transacti__CopyI__31EC6D26" ManuallyRouted="false" />
+        <AssociationConnector Association="LibraryModel.FK__Transacti__CustI__30F848ED" ManuallyRouted="false" />
+        <AssociationConnector Association="LibraryModel.FK__TagItem__Isbn__3D5E1FD2" ManuallyRouted="false" />
+        <AssociationConnector Association="LibraryModel.FK__TagItem__TagID__3C69FB99" ManuallyRouted="false" />
+      </Diagram>
+    </Diagrams>
   </Designer>
 </edmx:Edmx>
