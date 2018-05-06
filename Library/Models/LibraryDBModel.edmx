@@ -17,7 +17,7 @@
           <Key>
             <PropertyRef Name="AuthorID" />
           </Key>
-          <Property Name="AuthorID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="AuthorID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Isbn" Type="bigint" Nullable="false" />
           <Property Name="AuthName" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
@@ -86,8 +86,7 @@
           <Property Name="TransactionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CustID" Type="int" Nullable="false" />
           <Property Name="CopyID" Type="int" Nullable="false" />
-          <Property Name="Borrow_Date" Type="date" />
-          <Property Name="Return_Date" Type="date" />
+          <Property Name="TransacType" Type="varchar" MaxLength="20" />
         </EntityType>
         <Association Name="FK__Copy__Isbn__403A8C7D">
           <End Role="Item" Type="Self.Item" Multiplicity="1" />
@@ -101,7 +100,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Item__AuthorID__49C3F6B7">
+        <Association Name="FK__Item__AuthorID__5CD6CB2B">
           <End Role="Author" Type="Self.Author" Multiplicity="1" />
           <End Role="Item" Type="Self.Item" Multiplicity="*" />
           <ReferentialConstraint>
@@ -175,7 +174,7 @@
             <End Role="Item" EntitySet="Item" />
             <End Role="Copy" EntitySet="Copy" />
           </AssociationSet>
-          <AssociationSet Name="FK__Item__AuthorID__49C3F6B7" Association="Self.FK__Item__AuthorID__49C3F6B7">
+          <AssociationSet Name="FK__Item__AuthorID__5CD6CB2B" Association="Self.FK__Item__AuthorID__5CD6CB2B">
             <End Role="Author" EntitySet="Author" />
             <End Role="Item" EntitySet="Item" />
           </AssociationSet>
@@ -275,8 +274,7 @@
           <Property Name="CopyID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Copy" Relationship="Self.FK__Transacti__CopyI__31EC6D26" FromRole="Transaction" ToRole="Copy" />
           <NavigationProperty Name="Customer" Relationship="Self.FK__Transacti__CustI__30F848ED" FromRole="Transaction" ToRole="Customer" />
-          <Property Name="Borrow_Date" Type="DateTime" Precision="0" />
-          <Property Name="Return_Date" Type="DateTime" Precision="0" />
+          <Property Name="TransacType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK__Item__AuthorID__2A4B4B5E">
           <End Role="Author" Type="Self.Author" Multiplicity="1" />
@@ -477,8 +475,7 @@
           <EntitySetMapping Name="Transactions">
             <EntityTypeMapping TypeName="LibraryModel.Transaction">
               <MappingFragment StoreEntitySet="Transaction">
-                <ScalarProperty Name="Return_Date" ColumnName="Return_Date" />
-                <ScalarProperty Name="Borrow_Date" ColumnName="Borrow_Date" />
+                <ScalarProperty Name="TransacType" ColumnName="TransacType" />
                 <ScalarProperty Name="TransactionID" ColumnName="TransactionID" />
                 <ScalarProperty Name="CustID" ColumnName="CustID" />
                 <ScalarProperty Name="CopyID" ColumnName="CopyID" />

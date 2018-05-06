@@ -17,8 +17,7 @@ namespace Library.Models
         public int TransactionID { get; set; }
         public int CustID { get; set; }
         public int CopyID { get; set; }
-        public Nullable<System.DateTime> Borrow_Date { get; set; }
-        public Nullable<System.DateTime> Return_Date { get; set; }
+        public string TransacType { get; set; }
     
         public virtual Copy Copy { get; set; }
         public virtual Customer Customer { get; set; }

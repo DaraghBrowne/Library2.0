@@ -78,7 +78,7 @@
 				<td> @Html.DisplayFor(model => item.It.Subject)</td>
 				<td> @Html.DisplayFor(model => item.It.Year)</td>
 				<td>
-					@Html.ActionLink("Borrow", "BookBorrowed", "Customer", new { bookId = item.It.Isbn }, null)
+					<div class="col-sm-2"><input type="button" value="Borrow" class="btn btn-primary btn-sm" onclick="location.href='@Url.Action("BookBorrowed", "Customer", new { bookId = item.It.Isbn }, null)'" /></div>
 				</td>
 			</tr>
 			}
