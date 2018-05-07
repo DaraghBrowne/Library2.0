@@ -524,7 +524,11 @@
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
+<<<<<<< HEAD
       <Diagram DiagramId="a83ea5dc99b84ed48a4c6e7efc356afd" Name="Diagram1">
+=======
+      <Diagram DiagramId="e6fa144794114cce9de778943989f4a2" Name="Diagram1">
+>>>>>>> e9f1fcf3e996cff5e8518b1d919c6c96dee16d03
         <EntityTypeShape EntityType="LibraryModel.Administrator" Width="1.5" PointX="7.75" PointY="6.875" IsExpanded="true" />
         <EntityTypeShape EntityType="LibraryModel.Author" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
         <EntityTypeShape EntityType="LibraryModel.Copy" Width="1.5" PointX="5.25" PointY="3.5" IsExpanded="true" />
